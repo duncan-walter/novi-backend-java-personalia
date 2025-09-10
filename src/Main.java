@@ -4,8 +4,14 @@ import java.util.Scanner;
 public class Main {
     static Scanner scanner = new Scanner(System.in);
     static String name;
-//    Definieer hier de variabelen
-
+    static int age;
+    static String email;
+    static String address;
+    static String phone;
+    // Tegen de omschrijving in heb ik voor de height en weight variabelen voor het datatype float gekozen.
+    // Het double datatypen heeft namelijk een hogere precisie die niet nodig is, geheugen technisch is dat efficiënter.
+    static float height;
+    static float weight;
 
     public static void main(String[] args) {
         printMenu();
