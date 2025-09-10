@@ -45,7 +45,12 @@ public class Main {
         System.out.println();
         System.out.println("----- PROFIEL -----");
         System.out.println("Naam: " + name);
-//        Print hier de andere variabelen
+        System.out.println("Leeftijd: " + age);
+        System.out.println("E-mail: " + email);
+        System.out.println("Adres: " + address);
+        System.out.println("Telefoonnummer: " + phone);
+        System.out.println("Lengte: " + height + "cm");
+        System.out.println("Gewicht: " + weight + "kg");
 
 //        Roep de calculateBMI() methode aan.
         System.out.println("-------------------");
@@ -60,36 +65,45 @@ public class Main {
     private static void setAge() {
         System.out.print("Voer je leeftijd in: ");
         age = scanner.nextInt();
+        // Ik had problemen bij het inlezen van een int waarbij ik daarna weer een string wou inlezen.
+        // Wat blijkt? Stel dat ik 42 input en op enter druk, dan leest de nextInt() 4 en 2 uit de stream.
+        // De enter heeft ook een \n in de stream neergezet, maar deze neemt nextInt() niet mee.
+        // De volgende keer dat nextLine() in deze situatie wordt aangeroepen wordt de \n gelijk uitgelezen en als waarde teruggegeven.
+        // Deze situatie doet zich niet voor bij het uitlezen van een nextLine() na een nextLine() omdat nextLine() de \n (enter) wel oppakt.
+        // De oplossing is om de \n die is achtergebleven direct te consumeren met een nextLine() nadat er een nextInt()/nextFloat() plaatsvindt.
+        scanner.nextLine();
         System.out.println("Leeftijd opgeslagen: " + age);
     }
 
     private static void setEmail() {
         System.out.print("Voer je e-mail in: ");
-        email = scanner.nextLine();
+        email = scanner.nextLine().trim();
         System.out.println("E-mail opgeslagen: " + email);
-    }
-
-    private static void setPhone() {
-        System.out.print("Voer je telefoonnummer in: ");
-        phone = scanner.nextLine();
-        System.out.println("Telefoonnummer opgeslagen: " + phone);
     }
 
     private static void setAddress() {
         System.out.print("Voer je adres in: ");
-        address = scanner.nextLine();
+        address = scanner.nextLine().trim();
         System.out.println("Adres opgeslagen: " + address);
+    }
+
+    private static void setPhone() {
+        System.out.print("Voer je telefoonnummer in: ");
+        phone = scanner.nextLine().trim();
+        System.out.println("Telefoonnummer opgeslagen: " + phone);
     }
 
     private static void setHeight() {
         System.out.print("Voer je lengte in: ");
         height = scanner.nextFloat();
+        scanner.nextLine();
         System.out.println("Lengte opgeslagen: " + height + "cm");
     }
 
     private static void setWeight() {
         System.out.print("Voer je gewicht in: ");
         weight = scanner.nextFloat();
+        scanner.nextLine();
         System.out.println("Gewicht opgeslagen: " + weight + "kg");
     }
 }
