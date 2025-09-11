@@ -1,4 +1,4 @@
-
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Main {
@@ -12,6 +12,7 @@ public class Main {
     // Het double datatypen heeft namelijk een hogere precisie die niet nodig is, geheugen technisch is dat efficiënter.
     static float height;
     static float weight;
+    static LocalDate dateOfBirth;
 
     public static void main(String[] args) {
         printMenu();
@@ -23,6 +24,7 @@ public class Main {
         setPhone();
         setHeight();
         setWeight();
+        setDateOfBirth();
 
         printProfile();
         System.out.println("Afsluiten. Tot ziens!");
@@ -39,7 +41,8 @@ public class Main {
         System.out.println(" 5  - Vul telefoonnummer in");
         System.out.println(" 6  - Vul lengte in (cm)");
         System.out.println(" 7  - Vul gewicht in (kg)");
-        System.out.println(" 8  - Toon profiel");
+        System.out.println(" 8  - Vul geboortedatum in (jjjj-mm-dd)");
+        System.out.println(" 9  - Toon profiel");
     }
 
     private static void printProfile() {
@@ -53,6 +56,7 @@ public class Main {
         System.out.println("Lengte: " + height + "cm");
         System.out.println("Gewicht: " + weight + "kg");
         calculateAndDisplayBMI(height, weight);
+        System.out.println("Geboortedatum: " + dateOfBirth);
         System.out.println("-------------------");
     }
 
@@ -105,6 +109,12 @@ public class Main {
         weight = scanner.nextFloat();
         scanner.nextLine();
         System.out.println("Gewicht opgeslagen: " + weight + "kg");
+    }
+
+    private static void setDateOfBirth() {
+        System.out.print("Voer je geboortedatum in: ");
+        dateOfBirth = LocalDate.parse(scanner.nextLine());
+        System.out.println("Geboortedatum opgeslagen: " + dateOfBirth);
     }
 
     private static void calculateAndDisplayBMI(float height, float weight) {
