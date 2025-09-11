@@ -39,6 +39,7 @@ public class Main {
         System.out.println(" 5  - Vul telefoonnummer in");
         System.out.println(" 6  - Vul lengte in (cm)");
         System.out.println(" 7  - Vul gewicht in (kg)");
+        System.out.println(" 8  - Toon profiel");
     }
 
     private static void printProfile() {
@@ -51,8 +52,7 @@ public class Main {
         System.out.println("Telefoonnummer: " + phone);
         System.out.println("Lengte: " + height + "cm");
         System.out.println("Gewicht: " + weight + "kg");
-
-//        Roep de calculateBMI() methode aan.
+        calculateAndDisplayBMI(height, weight);
         System.out.println("-------------------");
     }
 
@@ -105,5 +105,11 @@ public class Main {
         weight = scanner.nextFloat();
         scanner.nextLine();
         System.out.println("Gewicht opgeslagen: " + weight + "kg");
+    }
+
+    private static void calculateAndDisplayBMI(float height, float weight) {
+        height /= 100; // Is in centimeters opgegeven dus we maken er hier meters van.
+        float bmi = weight / (height * height);
+        System.out.println("Je BMI is " + bmi + "%");
     }
 }
